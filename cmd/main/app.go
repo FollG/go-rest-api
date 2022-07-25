@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"log"
 	"net"
 	"net/http"
@@ -10,14 +9,12 @@ import (
 	"github.com/julienschmidt/httprouter"
 )
 
-func indexHandler(w http.ResponseWriter, r *http.Request, params httprouter.Params) {
-	name := params.ByName("name")
-	w.Write([]byte(fmt.Sprintf("Hello, %s!", name)))
-}
-
 func main() {
 	router := httprouter.New()
 	router.GET("/:name", indexHandler)
+}
+
+func start(router *httprouter.Router) {
 
 	listener, err := net.Listen("tcp", ":8080")
 	if err != nil {

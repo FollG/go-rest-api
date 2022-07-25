@@ -15,7 +15,13 @@ type Handler struct {
 	//logger and service will be here
 }
 
-func (h *Handler) Register(router *httprouter.Router) {
+var _ handlers.Handler = &handler{}
+
+func New() handlers.Handler {
+	return &handler{}
+}
+
+func (h *handler) Register(router *httprouter.Router) {
 	router.GET(usersURL, h.GetList)
 	router.POST(userURL, h.GetUserByUUID)
 	router.GET(usersURL, h.CreateUser)
