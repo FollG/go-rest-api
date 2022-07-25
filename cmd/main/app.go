@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"net"
 	"net/http"
@@ -10,8 +11,13 @@ import (
 )
 
 func main() {
+	fmt.Println("creating router")
 	router := httprouter.New()
-	router.GET("/:name", indexHandler)
+
+	handler := user.NewHandler()
+	handler.Register(router)
+
+	start(router)
 }
 
 func start(router *httprouter.Router) {
