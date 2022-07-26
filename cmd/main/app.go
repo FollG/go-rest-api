@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"go-rest-api/internal/user"
 	"log"
 	"net"
@@ -12,10 +11,10 @@ import (
 )
 
 func main() {
-	fmt.Println("creating router")
+	log.Println("creating router")
 	router := httprouter.New()
 
-	handler := user.New()
+	handler := user.NewHandler()
 	handler.Register(router)
 
 	start(router)

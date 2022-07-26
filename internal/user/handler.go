@@ -1,6 +1,7 @@
 package user
 
 import (
+	"go-rest-api/internal/handlers"
 	"net/http"
 
 	"github.com/julienschmidt/httprouter"
@@ -15,9 +16,9 @@ type handler struct {
 	//logger and service will be here
 }
 
-//var _ handler.Handler = &handler{}
+//var _ handlers.Handler = &handler{}
 
-func New() handler.Handler {
+func NewHandler() handlers.Handler {
 	return &handler{}
 }
 
