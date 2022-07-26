@@ -11,13 +11,13 @@ const (
 	userURL  = "/users/:uuid"
 )
 
-type Handler struct {
+type handler struct {
 	//logger and service will be here
 }
 
-var _ handlers.Handler = &handler{}
+//var _ handler.Handler = &handler{}
 
-func New() handlers.Handler {
+func New() handler.Handler {
 	return &handler{}
 }
 
@@ -30,26 +30,26 @@ func (h *handler) Register(router *httprouter.Router) {
 	router.DELETE(usersURL, h.DeleteUser)
 }
 
-func (h *Handler) GetList(w http.ResponseWriter, r *http.Request, params httprouter.Params) {
+func (h *handler) GetList(w http.ResponseWriter, r *http.Request, params httprouter.Params) {
 	w.Write([]byte("user list"))
 }
 
-func (h *Handler) GetUserByUUID(w http.ResponseWriter, r *http.Request, params httprouter.Params) {
+func (h *handler) GetUserByUUID(w http.ResponseWriter, r *http.Request, params httprouter.Params) {
 	w.Write([]byte("get user by id"))
 }
 
-func (h *Handler) CreateUser(w http.ResponseWriter, r *http.Request, params httprouter.Params) {
+func (h *handler) CreateUser(w http.ResponseWriter, r *http.Request, params httprouter.Params) {
 	w.Write([]byte("create user"))
 }
 
-func (h *Handler) UpdateUser(w http.ResponseWriter, r *http.Request, params httprouter.Params) {
+func (h *handler) UpdateUser(w http.ResponseWriter, r *http.Request, params httprouter.Params) {
 	w.Write([]byte("update user"))
 }
 
-func (h *Handler) PartiallyUpdateUser(w http.ResponseWriter, r *http.Request, params httprouter.Params) {
+func (h *handler) PartiallyUpdateUser(w http.ResponseWriter, r *http.Request, params httprouter.Params) {
 	w.Write([]byte("partially update user"))
 }
 
-func (h *Handler) DeleteUser(w http.ResponseWriter, r *http.Request, params httprouter.Params) {
+func (h *handler) DeleteUser(w http.ResponseWriter, r *http.Request, params httprouter.Params) {
 	w.Write([]byte("delete user"))
 }
